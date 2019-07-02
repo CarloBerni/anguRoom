@@ -1,46 +1,40 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { AppareilService } from "./services/appareil.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isAuth = false;
   lastUpdate = new Promise((resolve, reject) => {
     const date = new Date();
-    setTimeout(
-      () => {
-        resolve(date);
-      }, 1500
-    );
+    setTimeout(() => {
+      resolve(date);
+    }, 1500);
   });
 
-  appareils = [
-    {
-      name: 'rig Ethereum',
-      status: 'éteint'
-    },
-    {
-      name: 'rig Litecoin',
-      status: 'allumé'
-    },
-    {
-      name: 'rig Dash',
-      status: 'éteint'
-    },
-    {
-      name: 'rig Monero',
-      status: 'éteint'
-    }
-  ];
- 
-  constructor() {
-    setTimeout(() => {
-      this.isAuth = true;
-    }, 1500);
+  appareils: any[];
+
+  constructor(private appareilService: AppareilService) {}
+
+  ngOnInit() {
+    this.appareils = this.appareilService.appareils;
   }
-  onLightOn() {
-    console.log("On allume tout !");
+
+  onAllumer() {
+    if (confirm("Etes-vous sûr de vouloir allumer tous vos appareils ?")) {
+      this.appareilService.switchOnAll();
+    } else {
+      return null;
+    }
+  }
+  onEteindre() {
+    if (confirm("Etes-vous sûr de vouloir éteindre tous vos appareils ?")) {
+      this.appareilService.switchOffAll();
+    } else {
+      return null;
+    }
   }
 }
