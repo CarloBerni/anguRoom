@@ -7,17 +7,38 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   isAuth = false;
+  lastUpdate = new Promise((resolve, reject) => {
+    const date = new Date();
+    setTimeout(
+      () => {
+        resolve(date);
+      }, 1500
+    );
+  });
 
-  appareilOne = "rig Ethereum"
-  appareilTwo = "rig Litecoin";
-  appareilThree = "rig Dash";
-  appareilFour = "rig Monero";
-
-
+  appareils = [
+    {
+      name: 'rig Ethereum',
+      status: 'éteint'
+    },
+    {
+      name: 'rig Litecoin',
+      status: 'allumé'
+    },
+    {
+      name: 'rig Dash',
+      status: 'éteint'
+    },
+    {
+      name: 'rig Monero',
+      status: 'éteint'
+    }
+  ];
+ 
   constructor() {
     setTimeout(() => {
       this.isAuth = true;
-    }, 2500);
+    }, 1500);
   }
   onLightOn() {
     console.log("On allume tout !");
