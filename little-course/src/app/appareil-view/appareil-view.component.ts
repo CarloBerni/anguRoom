@@ -13,7 +13,7 @@ export class AppareilViewComponent implements OnInit {
     const date = new Date();
     setTimeout(() => {
       resolve(date);
-    }, 1500);
+    }, 1000);
   });
 
   appareils: any[];
