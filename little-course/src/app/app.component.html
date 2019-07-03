@@ -1,5 +1,15 @@
+<nav class="navbar navbar-dark bg-dark">
+  <ul class="nav nav-tabs">
+    <li routerLinkActive="active" class="nav-item">
+      <a routerLink="auth" class="btn btn-primary">Authentification</a>
+    </li>
+    <li routerLinkActive="active" class="nav-item">
+      <a routerLink="appareils" class="btn btn-primary">Appareils</a>
+    </li>
+  </ul>
+</nav>
 <div class="container">
   <div class="row">
-      <app-appareil-view></app-appareil-view>
+    <router-outlet></router-outlet>
   </div>
 </div>
