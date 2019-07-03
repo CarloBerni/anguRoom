@@ -7,12 +7,12 @@
       [indexOfAppareil]="i"
       [appareilName]="appareil.name"
       [appareilStatus]="appareil.status"
-    ></app-appareil>
+      [id]="appareil.id"></app-appareil>
   </ul>
-  <button class="btn btn-success" (click)="onAllumer()">
+  <button class="btn btn-success btn-space" (click)="onAllumer()">
     Tout allumer
   </button>
-  <button class="btn btn-danger" (click)="onEteindre()">
+  <button class="btn btn-danger btn-space" (click)="onEteindre()">
     Tout éteindre
   </button>
 </div>
